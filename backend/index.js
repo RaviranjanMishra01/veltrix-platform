@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const app = express();
 const PORT = 3000;
 const DB_URL = "mongodb://localhost:27017/mobile_selling";
-require("dotenv").config()
+require("dotenv").config() 
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
