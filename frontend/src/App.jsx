@@ -7,7 +7,7 @@ function App() {
     const fetchData = async () => {
       
       try {
-        let response = await fetch("http://localhost:8000");
+        let response = await fetch("https://veltrix-platfo.onrender.com");
         let result = await response.json();
         setData(result);
       } catch (error) {

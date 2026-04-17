@@ -7,13 +7,13 @@ require('dotenv').config();
 
 // Internal packages
 
-const app = express();
-app.use(cors());
+const app = express();4
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "https://veltrix-platform.onrender.com" }));
 
 app.use("/", (req, res) => {
-    res.json({name: "Hello, bro"})
+    res.json({ name: "Hello, bro" })
 })
 
 mongoose.connect(process.env.DB_URL)
