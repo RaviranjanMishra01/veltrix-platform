@@ -1,0 +1,28 @@
+.Homepage{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: red;
+}
+.mav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.7);
+}
+.home-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.home-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    font-size: 1.2em;
+    color: #562b2bbd;
+}
