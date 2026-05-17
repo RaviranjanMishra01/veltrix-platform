@@ -1,28 +1,39 @@
 // External packages
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
 
-// Import database connection
-const { default: db_connect } = require('./src/config/db');
+// Internal imports
+import db_connect from "./src/config/db.js";
+import authRoutes from "./src/routes/auth.routes.js";
 
-const app = express(); // create app
+const app = express();
 
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: ["http://localhost:5173", "https://veltrix-platform.onrender.com"] }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://veltrix-platform.onrender.com"
+  ],
+  credentials: true
+}));
 
 // Routes
-app.use("/", (req, res) => {
-    res.json({ name: "Hello, bro" });
+app.get("/", (req, res) => {
+  res.json({ message: "API running" });
 });
 
+app.use("/api/auth", authRoutes);
 
-
-// Connect database
+// DB connect
 db_connect();
-app.listen(process.env.PORT, () => {
-    console.log(`Server running at http://localhost:${process.env.PORT}`);
+
+// Server start
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
