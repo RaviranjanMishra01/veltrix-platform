@@ -1,30 +1,24 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-// const BASE_URL = import.meta.env.VITE_API_URL;
-const BASE_URL = import.meta.env.VITE_API_URL;
 
+import { Routes, Route } from "react-router-dom";
+import LoginFrom from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import Home from "./components/pages/Home";
 function App() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      let response = await fetch(`${BASE_URL}/`);
-      let result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  fetchData();
-}, []);
-  console.log(data);
   return (
-    <>
-      <h1>Hello, How are you ravi. {JSON.stringify(data)} </h1>
-      <p>Kya aapne aaj reel dekhi.</p>
-    </>
-  )
+    <Routes>
+      <Route
+        path="/"
+        element={ <Home />}
+      />
+      <Route
+        path="/login"
+        element={<LoginFrom />}
+      />
+      <Route
+        path="/register"
+        element={<RegisterForm />}
+      />
+    </Routes>
+  );
 }
-
-export default App
+export default App;
